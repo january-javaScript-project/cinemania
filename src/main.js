@@ -1,30 +1,30 @@
 // CSS
-import '../css/styles.css';
-import '../css/header.css';
-import '../css/weekly-trends.css';
+import './css/styles.css';
+import './css/header.css';
+import './css/weekly-trends.css';
 
 // Header
-import { initHeader } from './header';
+import { initHeader } from './js/header';
 
 // Hero
-import './hero';
-import './hero-tmdb';
+import './js/hero';
+import './js/hero-tmdb';
 
 // Sections
-import './weekly-trends';
-import './upcoming-this-month';
+import './js/weekly-trends';
+import './js/upcoming-this-month';
 
 // Modals
-import './modal';
-import './pop-up-movie-card';
-import './pop-up-trailer-card';
+import './js/modal';
+import './js/pop-up-movie-card';
+import './js/pop-up-trailer-card';
 
 // Library
-import './my-library';
-import './my-library-hero';
+import './js/my-library';
+import './js/my-library-hero';
 
 // API (side-effect)
-import './api/movies-api';
+import './js/api/movies-api';
 
 console.log('🎬 Cinemania Projesi Aktif');
 
