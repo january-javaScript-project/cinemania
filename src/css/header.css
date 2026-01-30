@@ -41,7 +41,7 @@
   font-weight: 600;
   font-size: 18px;
   line-height: 1.1;
-  color: var(--text-color);
+  color: #FFFFFF; /* var(--text-color) */
 }
 
 /* Desktop navigation (hidden on mobile) */
@@ -61,12 +61,12 @@
 .header-nav-link {
   text-decoration: none;
   font-size: 14px;
-  color: var(--nav-link-color);
-  transition: color var(--transition);
+  color: #B7B7B7; /* var(--nav-link-color) */
+  transition: color var(--transition); /* renk değil, aynen bırak */
 }
 
 .header-nav-link.is-active {
-  color: var(--primary-orange);
+  color: #F87719; /* var(--primary-orange) */
 }
 
 /* Right actions */
@@ -107,7 +107,7 @@
 
   border: none;
   border-radius: 999px;
-  background-color: var(--primary-orange);
+  background-color: #F87719; /* var(--primary-orange) */
   cursor: pointer;
 }
 
@@ -129,7 +129,7 @@
 
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--transition);
+  transition: opacity var(--transition); /* renk değil, aynen bırak */
 }
 
 .mobile-menu-panel {
@@ -138,10 +138,10 @@
   max-width: 320px;
 
   padding: 24px 20px;
-  background-color: #ffffff;
+  background-color: #FFFFFF;
 
   transform: translateX(-100%);
-  transition: transform var(--transition);
+  transition: transform var(--transition); /* renk değil, aynen bırak */
 }
 
 .mobile-menu.is-open {
@@ -192,4 +192,50 @@
   .header-container {
     padding: 0 32px;
   }
+}
+
+/* === VISIBILITY FIXES (icons + text) === */
+
+/* Logo text & links görünür olsun */
+.header-logo-text {
+  color: #111111; /* light bg için */
+}
+
+/* Desktop nav linkler */
+.header-nav-link {
+  color: #595959;
+}
+.header-nav-link.is-active {
+  color: #F87719;
+}
+
+/* Burger ikon ve tema ikonları SVG görünür olsun */
+.burger-btn svg,
+.theme-toggle svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+/* SVG içindeki path'lere renk bas */
+.burger-btn svg path,
+.burger-btn svg use,
+.theme-toggle svg path,
+.theme-toggle svg use {
+  fill: #111111;
+  stroke: #111111;
+}
+
+/* Theme toggle arka plan turuncuysa ikon beyaz olsun */
+.theme-toggle svg path,
+.theme-toggle svg use {
+  fill: #ffffff;
+  stroke: #ffffff;
+}
+
+/* Popcorn (logo svg) görünür olsun */
+.header-logo svg path,
+.header-logo svg use {
+  fill: #F87719;
+  stroke: #F87719;
 }
