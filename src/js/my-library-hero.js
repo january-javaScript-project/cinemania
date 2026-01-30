@@ -1,0 +1,187 @@
+// Modüller
+import { BASE_URL, API_KEY } from './api/movies-api.js';
+import { showMovieDetailsModal, showTrailerModal } from './modal.js';
+
+const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/original';
+const FALLBACK_IMAGE = '../img/library-hero-image.jpg';
+
+// My Library Hero
+async function initializeMyLibraryHero() {
+  try {
+    const userMovies = getUserMoviesFromLocalStorage();
+
+    if (userMovies && userMovies.length > 0) {
+      const randomMovie = getRandomMovieFromUserLibrary(userMovies);
+      displayMyLibraryHero(randomMovie);
+    } else {
+      displayDefaultMyLibraryHero();
+    }
+  } catch (error) {
+    console.error('Error initializing my library hero:', error);
+    displayDefaultMyLibraryHero();
+  }
+}
+
+// LocalStorage
+function getUserMoviesFromLocalStorage() {
+  try {
+    const savedMovies = localStorage.getItem('userMovies');
+    return savedMovies ? JSON.parse(savedMovies) : null;
+  } catch (error) {
+    console.error('Error reading from localStorage:', error);
+    return null;
+  }
+}
+
+// Rastgele film
+function getRandomMovieFromUserLibrary(movies) {
+  if (!movies || movies.length === 0) return null;
+  const randomIndex = Math.floor(Math.random() * movies.length);
+  return movies[randomIndex];
+}
+
+// Yıldız
+function generateStarRating(rating) {
+  const starCount = rating / 2;
+  const fullStars = Math.floor(starCount);
+  const hasHalfStar = starCount % 1 >= 0.3;
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+  let starsHTML = '';
+
+  for (let i = 0; i < fullStars; i++) {
+    starsHTML += '<span class="star filled">★</span>';
+  }
+
+  if (hasHalfStar) {
+    starsHTML += '<span class="star half">★</span>';
+  }
+
+  for (let i = 0; i < emptyStars; i++) {
+    starsHTML += '<span class="star empty">★</span>';
+  }
+
+  return starsHTML;
+}
+
+// DOM
+function displayMyLibraryHero(movie) {
+  if (!movie) {
+    displayDefaultMyLibraryHero();
+    return;
+  }
+
+  const myLibraryHeroSection = document.querySelector('.my-library-hero');
+  const myLibraryHeroOverlay = document.querySelector('.my-library-hero__overlay');
+
+  if (!myLibraryHeroSection || !myLibraryHeroOverlay) {
+    console.error('Hero elements not found!');
+    return;
+  }
+
+  const backgroundImage = movie.backdrop_path
+    ? `${IMAGE_BASE_URL}${movie.backdrop_path}`
+    : FALLBACK_IMAGE;
+
+  myLibraryHeroSection.style.backgroundImage = `url('${backgroundImage}')`;
+
+  const overview =
+    movie.overview?.length > 180
+      ? `${movie.overview.slice(0, 180)}...`
+      : movie.overview || 'No description available.';
+
+  const starRating = movie.vote_average
+    ? generateStarRating(movie.vote_average)
+    : '';
+
+  myLibraryHeroOverlay.innerHTML = `
+    <h1 class="my-library-hero__title">${movie.title}</h1>
+    <div class="my-library-hero__rating">${starRating}</div>
+    <p class="my-library-hero__description">${overview}</p>
+    <div class="my-library-hero__buttons">
+      <button class="my-library-hero__btn my-library-hero__btn--trailer" id="my-library-hero-trailer-btn">
+        Watch trailer
+      </button>
+      <button class="my-library-hero__btn my-library-hero__btn--details" id="my-library-hero-details-btn">
+        More details
+      </button>
+    </div>
+  `;
+
+  attachMyLibraryHeroButtonListeners(movie.id);
+}
+
+// Buton
+function attachMyLibraryHeroButtonListeners(movieId) {
+  document
+    .getElementById('my-library-hero-details-btn')
+    ?.addEventListener('click', () => handleShowMovieDetails(movieId));
+
+  document
+    .getElementById('my-library-hero-trailer-btn')
+    ?.addEventListener('click', () => handleShowTrailer(movieId));
+}
+
+// Detay modal
+async function handleShowMovieDetails(movieId) {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en`
+    );
+
+    if (!response.ok) throw new Error(response.status);
+
+    const movie = await response.json();
+    showMovieDetailsModal(movie);
+  } catch (error) {
+    console.error('Error loading movie details:', error);
+    alert('Failed to load movie details. Please try again.');
+  }
+}
+
+// Fragman modal
+async function handleShowTrailer(movieId) {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=en`
+    );
+
+    if (!response.ok) throw new Error(response.status);
+
+    const data = await response.json();
+
+    const trailer = data.results?.find(
+      video => video.type === 'Trailer' && video.site === 'YouTube'
+    );
+
+    trailer
+      ? showTrailerModal(trailer.key)
+      : alert('Trailer not found for this movie!');
+  } catch (error) {
+    console.error('Error loading trailer:', error);
+    alert('Failed to load trailer. Please try again.');
+  }
+}
+
+// Default Hero
+function displayDefaultMyLibraryHero() {
+  const myLibraryHeroSection = document.querySelector('.my-library-hero');
+  const myLibraryHeroOverlay = document.querySelector('.my-library-hero__overlay');
+
+  if (myLibraryHeroSection) {
+    myLibraryHeroSection.style.backgroundImage = `url('${FALLBACK_IMAGE}')`;
+  }
+
+  if (!myLibraryHeroOverlay) return;
+
+  myLibraryHeroOverlay.innerHTML = `
+    <h1 class="my-library-hero__title">Create Your Dream Cinema</h1>
+    <p class="my-library-hero__description">
+      Is a guide to designing a personalized movie theater experience with the right equipment,
+      customized decor, and favorite films.
+    </p>
+  `;
+}
+
+// Başlat
+document.addEventListener('DOMContentLoaded', initializeMyLibraryHero);
