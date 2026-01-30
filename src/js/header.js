@@ -1,47 +1,30 @@
-
-
-// Sayfa yüklendiğinde header fonksiyonunu çalıştır
-//document.addEventListener('DOMContentLoaded', () => {
-  //  initHeader();
-
-//});
-
-
-
+// src/js/header.js
 export function initHeader() {
-    const themeSwitch = document.getElementById('theme-switch');
-    const body = document.body;
+  // Mobil menü
+  const burgerBtn = document.querySelector('.burger-btn');
+  const mobileMenu = document.querySelector('.mobile-menu');
 
-    // tema kontrolü(varsayılan dark ve localStorage)
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    body.classList.add(`${currentTheme}-theme`);
-
-    if (currentTheme === 'light') {
-        themeSwitch.checked = true;
-    }
-
-    // tema değişikliği
-
-    themeSwitch.addEventListener('change', () => {
-        if (themeSwitch.checked) {
-            body.classList.replace('dark-theme', 'light-theme');
-            localStorage.setItem('theme', 'light');
-        } else {
-            body.classList.replace('light-theme', 'dark-theme');
-            localStorage.setItem('theme', 'dark');
-        }
+  if (burgerBtn && mobileMenu) {
+    burgerBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('is-open');
     });
+  }
 
-    //// 2. Aktif Sayfa Vurgulama Mantığı
-  const navLinks = document.querySelectorAll('.nav-link');
-  const currentPath = window.location.pathname;
+  // Tema (ilk yükleme)
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  document.body.classList.add(`${savedTheme}-theme`);
 
-  navLinks.forEach(link => {
-    if (link.getAttribute('href').includes(currentPath) && currentPath !== '/') {
-      link.classList.add('active');
-    } else if (currentPath === '/' || currentPath.includes('index.html')) {
-      document.querySelector('#home-link')?.classList.add('active');
-    }
-  });
+  // Tema toggle
+  const themeToggle = document.querySelector('.theme-toggle');
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const isLight = document.body.classList.contains('light-theme');
+
+      document.body.classList.toggle('light-theme', !isLight);
+      document.body.classList.toggle('dark-theme', isLight);
+
+      localStorage.setItem('theme', isLight ? 'dark' : 'light');
+    });
+  }
 }
-
