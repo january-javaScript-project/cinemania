@@ -6,6 +6,22 @@ import { openTrailerPopup } from './pop-up-trailer-card.js';
 const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/original';
 const FALLBACK_IMAGE = '../img/library-hero-image.jpg';
 
+// Loader
+const myLibraryHeroLoader = document.querySelector('.my-library-hero__loader');
+
+function showLoader() {
+  myLibraryHeroLoader?.classList.remove('is-hidden');
+}
+
+function hideLoader() {
+  myLibraryHeroLoader?.classList.add('is-hidden');
+}
+// Error popup
+function showErrorPopup() {
+  const errorPopup = document.getElementById('error-popup');
+  if (errorPopup) errorPopup.classList.add('show');
+}
+
 // My Library Hero
 async function initializeMyLibraryHero() {
   try {
@@ -125,6 +141,7 @@ function attachMyLibraryHeroButtonListeners(movieId) {
 
 // Detay modal
 async function handleShowMovieDetails(movieId) {
+  showLoader();
   try {
     const response = await fetch(
       `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=en`
@@ -136,12 +153,15 @@ async function handleShowMovieDetails(movieId) {
     openMoviePopup(movie);
   } catch (error) {
     console.error('Error loading movie details:', error);
-    alert('Failed to load movie details. Please try again.');
+    showErrorPopup(); 
+  } finally {
+    hideLoader(); 
   }
 }
 
 // Fragman modal
 async function handleShowTrailer(movieId) {
+  showLoader(); 
   try {
     const response = await fetch(
       `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=en`
@@ -158,11 +178,13 @@ async function handleShowTrailer(movieId) {
     if (trailer) {
       openTrailerPopup(trailer.key);
     } else {
-      alert('Trailer not found for this movie!');
+      showErrorPopup(); 
     }
   } catch (error) {
     console.error('Error loading trailer:', error);
-    alert('Failed to load trailer. Please try again.');
+    showErrorPopup(); 
+  } finally {
+    hideLoader(); 
   }
 }
 

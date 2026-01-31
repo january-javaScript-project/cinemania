@@ -63,7 +63,10 @@
 }
 
 .my-library-hero__rating .star.filled {
-    background: linear-gradient(#ffc226, #f84119);
+    background: linear-gradient(135deg, #ffc226, #f84119);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .my-library-hero__rating .star.half {
@@ -75,13 +78,16 @@
     content: "★";
     position: absolute;
     left: 0;
-    background: linear-gradient(#ffc226, #f84119);
+    background: linear-gradient(135deg, #ffc226, #f84119);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     width: 50%;
     overflow: hidden;
 }
 
 .my-library-hero__rating .star.empty {
-    color: transparent;
+    color: #333;
 }
 
 /* Buton */
@@ -105,7 +111,7 @@
 
 /* Trailer*/
 .my-library-hero__btn--trailer {
-    background: linear-gradient(#ffc226 #f84119);
+    background: linear-gradient(135deg, #ffc226, #f84119);
     color: var(--white);
     border: none;
     border-radius: 16px;
@@ -113,7 +119,7 @@
 }
 
 .my-library-hero__btn--trailer:hover {
-    background-color:white;
+    background: linear-gradient(135deg, #f84119, #ffc226);
     transform: scale(1.05);
 }
 
@@ -127,6 +133,33 @@
 .my-library-hero__btn--details:hover {
     background-color: rgba(255, 255, 255, 0.1);
     transform: scale(1.05);
+}
+
+/* Loader */
+.my-library-hero__loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border: 6px solid rgba(255, 255, 255, 0.1);
+    border-top: 6px solid #f87d19;
+    border-right: 6px solid #f87d19;
+    border-bottom: 6px solid transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    z-index: 10;
+}
+
+.my-library-hero__loader.is-hidden {
+    display: none;
+}
+
+@keyframes spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
 }
 
 /* Responsive */
@@ -166,5 +199,11 @@
 
     .my-library-hero__rating .star {
         font-size: 20px;
+    }
+
+    .my-library-hero__loader {
+        width: 50px;
+        height: 50px;
+        border-width: 5px;
     }
 }
