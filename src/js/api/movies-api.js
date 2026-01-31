@@ -44,3 +44,15 @@ export async function getMovieDetails(movieId) {
     console.error("Detay Hatası:", error);
   }
 }
+
+export async function getDailyTrending() {
+  try {
+    const response = await fetch(`${BASE_URL}/trending/movie/day?api_key=${API_KEY}`);
+    if (!response.ok) throw new Error('Veri Ã§ekilemedi!');
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error("Hata:", error);
+    return [];
+  }
+}
