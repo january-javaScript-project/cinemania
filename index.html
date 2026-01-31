@@ -7,14 +7,98 @@
     <title>Cinemania</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/src/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" href="/vanilla-app-template/assets/popcorn.svg" />
+
     <script type="module" crossorigin src="/vanilla-app-template/index.js"></script>
-    <link rel="stylesheet" crossorigin href="/vanilla-app-template/assets/index-CR_ZVtbX.css">
+    <link rel="stylesheet" crossorigin href="/vanilla-app-template/assets/styles-bAQFkc9Y.css">
   </head>
 
-  <body>
+  <body class="dark-theme">
     <!-- HEADER (senin modülün) -->
-    <include src="./partials/header.html"></include>
+    <header class="header">
+  <div class="header-container">
+    <!-- Logo (Home) -->
+    <a class="header-logo" href="./index.html" aria-label="Cinemania home">
+     
+        <img class="header-logo-img" 
+               src="/vanilla-app-template/assets/popcorn.svg" 
+               alt="Cinemania" 
+               width="28" 
+               height="28"
+      />
+      <span class="header-logo-text">Cinemania</span>
+    </a>
+      <span class="header-mobile-title">MENU</span>
+    <!-- Desktop navigation -->
+    <nav class="header-nav" aria-label="Main navigation">
+      <ul class="header-nav-list">
+        <li>
+          <a class="header-nav-link" href="./index.html">Home</a>
+        </li>
+        <li>
+          <a class="header-nav-link" href="./page-2.html">Catalog</a>
+        </li>
+        <li>
+          <a class="header-nav-link" href="./page-3.html">My Library</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Right actions -->
+    <div class="header-actions">
+      <!-- Theme toggle -->
+      <button
+        class="theme-toggle"
+        type="button"
+        aria-label="Toggle dark / light theme"
+      >
+      <img class="theme-icon"
+  src="/vanilla-app-template/assets/sun.svg"
+  alt=""
+  width="10px"
+  height="10px"
+/>
+        <img
+    class="theme-icon"
+    src="/vanilla-app-template/assets/moon.svg"
+    alt=""
+    width="13px"
+    height="13px"
+  />
+  
+
+
+      <!-- Burger button (mobile) -->
+      <button
+        class="burger-btn"
+        type="button"
+        aria-label="Open menu"
+      >
+        <svg width="24" height="24" aria-hidden="true">
+          <use href="/assets/burger.svg#icon-burger"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu">
+    <div class="mobile-menu-panel">
+      <ul class="mobile-menu-list">
+        <li>
+          <a class="mobile-menu-link" href="./index.html">Home</a>
+        </li>
+        <li>
+          <a class="mobile-menu-link" href="./page-2.html">Catalog</a>
+        </li>
+        <li>
+          <a class="mobile-menu-link" href="./page-3.html">My Library</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
 
     <!-- HERO (başka arkadaş ekleyecek) -->
     <!-- <include src="./partials/hero.html"></include> -->
