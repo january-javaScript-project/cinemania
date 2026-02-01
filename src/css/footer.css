@@ -1,21 +1,257 @@
+/* Base footer styles */
 .footer {
-  padding: 20px 0;
+  background-color: #ffffff;
+  /* Light mode default */
+  color: #b7b7b7;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  width: 100%;
+  box-sizing: border-box;
+  /* Mobile padding (Mobile First) */
+  padding-top: 28px;
+  /* Assuming top matches bottom for vertical balance if not specified, but user only specified bottom. Let's start with matching bottom or 0 if strictly following. I'll use same as bottom for aesthetic balance unless "positioned at very bottom" implies something else. Let's use the bottom padding for top as well to center vertically, or just padding-bottom as requested and auto height. */
+  padding-bottom: 28px;
+  padding-left: 42px;
+  padding-right: 42px;
+  transition: background-color 0.3s ease;
 }
-.footer-desc {
+
+/* Dark mode overrides */
+body.dark-theme .footer {
+  background-color: #111111;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 !important;
+  /* Override container.css padding to strictly use footer padding for spacing */
+  max-width: 100% !important;
+  /* Ensure it takes full available width */
+  width: 100%;
+}
+
+.footer-text {
+  margin: 0;
+  line-height: 1.5;
+  font-size: 14px;
+  /* Standard readable size */
   text-align: center;
 }
-.footer-link {
-  position: relative;
+
+.footer-text-line {
+  display: block;
+  /* Mobile: Ensure 2 lines */
 }
-.footer-link::before {
-  content: '';
+
+.heart {
+  color: #ff6b08;
+  /* Orange heart as seen in design/standard */
+  display: inline-block;
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.footer-link {
+  color: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.footer-link:hover,
+.footer-link:focus {
+  color: #ff6b08;
+  /* Active color */
+}
+
+/* Tablet styles (768px+) */
+@media screen and (min-width: 768px) {
+  .footer {
+    padding-bottom: 40px;
+    padding-top: 40px;
+    padding-left: 143px;
+    padding-right: 143px;
+  }
+
+  .footer-text {
+    font-size: 16px;
+    white-space: nowrap;
+    /* Tablet+: Ensure single line */
+  }
+
+  .footer-text-line {
+    display: inline;
+    /* Tablet+: Return to single line flow */
+  }
+}
+
+/* Desktop styles (1280px+) */
+@media screen and (min-width: 1280px) {
+  .footer {
+    padding-bottom: 80px;
+    padding-top: 80px;
+    padding-left: 399px;
+    padding-right: 399px;
+  }
+}
+
+
+/* --- Team Modal Styles --- */
+
+.team-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.team-modal-backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.team-modal {
+  position: relative;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 8px;
+  max-width: 800px;
+  width: 100%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  /* Dark mode support inside modal */
+}
+
+body.dark-theme .team-modal {
+  background-color: #111111;
+  color: #ffffff;
+  border: 1px solid #333;
+}
+
+.team-modal-close {
   position: absolute;
-  bottom: 6%;
-  left: 50%;
-  transform: translateX(-50%) skewX(-12deg);
-  z-index: -1;
-  width: 110%;
-  height: 24%;
-  background-color: #41d1ff;
-  transition: 200ms ease;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: inherit;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.team-modal-close:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-theme .team-modal-close:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.team-modal-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.team-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.team-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.team-member:hover {
+  transform: translateY(-5px);
+}
+
+.member-avatar-placeholder {
+  width: 80px;
+  height: 80px;
+  background-color: #ccc;
+  /* Placeholder color */
+  border-radius: 50%;
+  margin-bottom: 15px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23777"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>');
+  background-size: 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.member-name {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.member-role {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+body.dark-theme .member-role {
+  color: #bbb;
+}
+
+.member-github {
+  font-size: 14px;
+  color: #ff6b08;
+  text-decoration: none;
+}
+
+.member-github:hover {
+  text-decoration: underline;
+}
+
+.member-github.disabled {
+  color: #999;
+  pointer-events: none;
 }
