@@ -2,9 +2,9 @@
   <div class="search-row">
     <div class="film-input">
       <input type="text" class="search-input" placeholder="Film" />
-      <button class="search-clear-btn" style="display: none">
+      <button class="search-clear-btn" style="display: block">
         <svg width="18" height="18">
-          <use href="../public/icons.svg#icon-close"></use>
+          <use href="../images/icons.svg#icon-close"></use>
         </svg>
       </button>
     </div>
@@ -13,7 +13,7 @@
       <button class="year-btn" id="yearBtn" type="button">
         <span id="selectedYear">Year</span>
         <svg class="icon-chevron" width="16" height="16" aria-hidden="true">
-          <use href="../public/icons.svg#icon-chevron-down"></use>
+          <use href="../images/icons.svg#icon-chevron-down"></use>
         </svg>
       </button>
 
@@ -34,7 +34,7 @@
       </ul>
     </div>
 
-    <div class="search-input-content" id="searchContent">
+    <div class="search-input-content" id="searchContent" style="display: none">
       <input
         type="text"
         class="search-input search-input-text"
@@ -44,14 +44,14 @@
 
     <button class="search-btn">
       <svg width="18" height="18">
-        <use href="../public/icons.svg#icon-search"></use>
+        <use href="../images/icons.svg#icon-search"></use>
       </svg>
     </button>
   </div>
 </section>
 <div class="movie-list">
   <div id="moviesContainer"></div>
-  <div id="emptyMessage" hidden style="display: block">
+  <div id="emptyMessage" style="display: block">
     <p class="emptyHidden">
       OOPS...<br />
       We are very sorry!<br />
