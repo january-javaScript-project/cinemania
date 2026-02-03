@@ -31,6 +31,10 @@
     padding: 0 14px;
 }
 
+.search-input::placeholder {
+    color: #b7b7b7;
+}
+
 .search-clear-btn {
     position: absolute;
     color: #fff;
@@ -44,7 +48,7 @@
 
 .year-select {
     position: relative;
-    background: #111;
+    background: transparent;
     width: 95px;
 }
 
@@ -170,6 +174,10 @@
     color: #111;
 }
 
+.movie-list {
+    padding: 0 20px;
+}
+
 #moviesContainer {
     display: grid;
     grid-template-columns: 1fr;
@@ -249,8 +257,8 @@
 
 .movie-rating-stars {
     position: absolute;
-    right: 12px;
-    bottom: 17px;
+    right: 54px;
+    bottom: 18px;
     display: flex;
     flex-direction: row;
     gap: 0;
@@ -312,6 +320,10 @@
 
     .search-input-content {
         display: none;
+    }
+
+    .movie-list {
+        padding: 0 32px;
     }
 
     #moviesContainer {
