@@ -170,6 +170,10 @@
     color: #111;
 }
 
+.movie-list {
+    padding: 0 20px;
+}
+
 #moviesContainer {
     display: grid;
     grid-template-columns: 1fr;
@@ -312,6 +316,10 @@
 
     .search-input-content {
         display: none;
+    }
+
+    .movie-list {
+        padding: 0 32px;
     }
 
     #moviesContainer {
