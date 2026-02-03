@@ -1,30 +1,81 @@
-// src/js/header.js
-export function initHeader() {
-  // Mobil menü
+const THEME_KEY = 'cinemania-theme';
+const THEME_DARK = 'dark';
+const THEME_LIGHT = 'light';
+
+function applyTheme(theme) {
+  const body = document.body;
+
+  // always keep exactly one
+  body.classList.remove('dark-theme', 'light-theme');
+
+  if (theme === THEME_LIGHT) {
+    body.classList.add('light-theme');
+  } else {
+    body.classList.add('dark-theme');
+  }
+}
+
+function getSavedTheme() {
+  const saved = localStorage.getItem(THEME_KEY);
+  return saved === THEME_LIGHT ? THEME_LIGHT : THEME_DARK; // default dark
+}
+
+function saveTheme(theme) {
+  localStorage.setItem(THEME_KEY, theme);
+}
+
+function initThemeToggle() {
+  const toggleBtn = document.querySelector('.theme-toggle');
+  if (!toggleBtn) return;
+
+  // apply on load
+  applyTheme(getSavedTheme());
+
+  toggleBtn.addEventListener('click', () => {
+    const current = document.body.classList.contains('light-theme') ? THEME_LIGHT : THEME_DARK;
+    const next = current === THEME_LIGHT ? THEME_DARK : THEME_LIGHT;
+
+    applyTheme(next);
+    saveTheme(next);
+  });
+}
+
+function initMobileMenu() {
   const burgerBtn = document.querySelector('.burger-btn');
-  const mobileMenu = document.querySelector('.mobile-menu');
+  const menuOverlay = document.querySelector('[data-menu]');
 
-  if (burgerBtn && mobileMenu) {
-    burgerBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('is-open');
-    });
-  }
+  if (!burgerBtn || !menuOverlay) return;
 
-  // Tema (ilk yükleme)
-  const savedTheme = localStorage.getItem('theme') || 'dark';
-  document.body.classList.add(`${savedTheme}-theme`);
+  const openMenu = () => menuOverlay.classList.remove('is-hidden');
+  const closeMenu = () => menuOverlay.classList.add('is-hidden');
 
-  // Tema toggle
-  const themeToggle = document.querySelector('.theme-toggle');
+  burgerBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
 
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      const isLight = document.body.classList.contains('light-theme');
+    // toggle
+    if (menuOverlay.classList.contains('is-hidden')) openMenu();
+    else closeMenu();
+  });
 
-      document.body.classList.toggle('light-theme', !isLight);
-      document.body.classList.toggle('dark-theme', isLight);
+  // close when clicking outside panel
+  menuOverlay.addEventListener('click', (e) => {
+    if (e.target === menuOverlay) closeMenu();
+  });
 
-      localStorage.setItem('theme', isLight ? 'dark' : 'light');
-    });
-  }
+  // close when clicking link
+  menuOverlay.addEventListener('click', (e) => {
+    const link = e.target.closest('.mobile-menu-link');
+    if (link) closeMenu();
+  });
+
+  // close on Esc
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
+}
+
+export function initHeader() {
+  initThemeToggle();
+  initMobileMenu();
 }
