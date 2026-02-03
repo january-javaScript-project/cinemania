@@ -6,10 +6,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 //import { initHeader } from './js/header';
+import { initCatalog } from './js/catalog.js';
 
 //document.addEventListener('DOMContentLoaded', () => {
 //  initHeader();
 //});
-import { startHeroApp } from './js/hero';
+import { startHeroApp } from './js/hero.js';
 
+document.addEventListener('DOMContentLoaded', () => {
+  initCatalog();
+});
 startHeroApp();
