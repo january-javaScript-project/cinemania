@@ -1,32 +1,24 @@
-import { getTrending } from './movie-api.js'; 
+import { getWeeklyTrending } from './movie-api.js'; 
 
 const movieGrid = document.getElementById('movie-grid');
 
-/**
- * Haftalık trendleri başlatan ana fonksiyon.
- * Arkadaşın muhtemelen bunu ana (main.js) dosyada çağıracaktır.
- */
 export async function initWeeklyTrends() {
-    if (!movieGrid) return; // Sayfada element yoksa çalışma
+    if (!movieGrid) return;
 
     try {
-        // Kendi fetch'imiz yerine ortak API fonksiyonunu kullanıyoruz
-        const data = await getTrending(); 
+        // Fonksiyon adını movie-api.js'deki gibi güncelledik
+        const movies = await getWeeklyTrending(); 
         
-        if (data && data.results) {
-            displayMovies(data.results.slice(0, 3)); // İlk 3 filmi göster
+        if (movies && movies.length > 0) {
+            displayMovies(movies.slice(0, 3)); 
         }
     } catch (error) {
         console.error("Trend verileri yüklenirken hata oluştu:", error);
     }
 }
 
-/**
- * Gelen film verilerini HTML yapısına döker
- */
 function displayMovies(movies) {
     movieGrid.innerHTML = movies.map(movie => {
-        // Çıkış yılı ve türler için güvenli kontrol
         const releaseYear = movie.release_date ? movie.release_date.split('-')[0] : 'N/A';
         
         return `
@@ -41,5 +33,4 @@ function displayMovies(movies) {
     `}).join('');
 }
 
-// Sayfa yüklendiğinde otomatik çalışması için:
 initWeeklyTrends();

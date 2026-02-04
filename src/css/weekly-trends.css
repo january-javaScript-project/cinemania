@@ -1,92 +1,71 @@
-/* Temel Stiller */
-body {
+/* Ana konteyner: Body stillerini buraya çektik */
+.weekly-trends {
     background-color: #000;
     color: #fff;
     font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 20px;
+    padding: 20px 0;
 }
 
-.container {
+.weekly-trends__container {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 0 20px;
 }
 
-.header {
+.weekly-trends__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.header h2 {
+.weekly-trends__title {
     font-size: 1.5rem;
     letter-spacing: 1px;
+    margin: 0;
 }
 
-.see-all {
+.weekly-trends__see-all {
     color: #ff6b00;
     text-decoration: none;
     font-weight: bold;
 }
 
-/* Grid Sistemi */
-.movie-grid {
+/* Grid Sistemi - İsim güncellendi */
+.weekly-trends__grid {
     display: grid;
     gap: 20px;
-    /* Mobil: 1 Kolon */
     grid-template-columns: repeat(1, 1fr);
 }
 
-/* Tablet: 2 Kolon */
 @media (min-width: 600px) {
-    .movie-grid {
+    .weekly-trends__grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* PC: 3 Kolon (Görseldeki gibi) */
 @media (min-width: 1024px) {
-    .movie-grid {
+    .weekly-trends__grid {
         grid-template-columns: repeat(3, 1fr);
     }
 }
 
-/* Kart Tasarımı */
-.movie-card {
+/* Kart Tasarımları - Diğer stillerle karışmaması için başına .weekly-trends ekledik */
+.weekly-trends .movie-card {
     position: relative;
     border-radius: 10px;
     overflow: hidden;
     transition: transform 0.3s ease;
 }
 
-.movie-card:hover {
-    transform: scale(1.02);
-}
-
-.movie-card img {
+.weekly-trends .movie-card img {
     width: 100%;
     display: block;
     aspect-ratio: 2/3;
     object-fit: cover;
 }
 
-.movie-info {
-    padding: 15px 0;
-}
-
-.movie-title {
-    font-weight: bold;
-    text-transform: uppercase;
-    margin: 5px 0;
-}
-
-.movie-meta {
-    color: #aaa;
-    font-size: 0.9rem;
-}
-
-.stars {
+.weekly-trends .stars {
     color: #ff6b00;
     margin-top: 5px;
 }
