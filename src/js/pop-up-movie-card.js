@@ -1,16 +1,44 @@
 import { getMovieDetails } from './api/movies-api.js';
 
-const loader = document.querySelector('.popup-loader');
-const overlay = document.querySelector('.popup-modal-overlay');
-const closeBtn = document.querySelector('.popup-modal-close');
-const libraryBtn = document.querySelector('.popup-add-library-btn');
-
-const posterImg = document.querySelector('.popup-movie-poster img');
-const titleEl = document.querySelector('.popup-movie-title');
-const infoValues = document.querySelectorAll('.popup-movie-info .popup-value');
-const descriptionEl = document.querySelector('.popup-movie-description');
-
 const LIBRARY_KEY = 'my-library';
+
+let loader;
+let overlay;
+let closeBtn;
+let libraryBtn;
+
+let posterImg;
+let titleEl;
+let infoValues;
+let descriptionEl;
+
+function initPopup() {
+  overlay = document.querySelector('.popup-modal-overlay');
+  loader = document.querySelector('.popup-loader');
+  closeBtn = document.querySelector('.popup-modal-close');
+  libraryBtn = document.querySelector('.popup-add-library-btn');
+
+  posterImg = document.querySelector('.popup-movie-poster img');
+  titleEl = document.querySelector('.popup-movie-title');
+  infoValues = document.querySelectorAll('.popup-movie-info .popup-value');
+  descriptionEl = document.querySelector('.popup-movie-description');
+
+  if (!overlay) return;
+
+  if (closeBtn) {
+    closeBtn.addEventListener('click', closeMoviePopup);
+  }
+
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) closeMoviePopup();
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && overlay.classList.contains('is-active')) {
+      closeMoviePopup();
+    }
+  });
+}
 
 async function openMoviePopup(movieId) {
   if (!overlay || !loader) return;
@@ -91,18 +119,6 @@ function toggleLibrary(movie) {
   localStorage.setItem(LIBRARY_KEY, JSON.stringify(library));
 }
 
-if (closeBtn) {
-  closeBtn.addEventListener('click', closeMoviePopup);
-}
-
-if (overlay) {
-  overlay.addEventListener('click', e => {
-    if (e.target === overlay) closeMoviePopup();
-  });
-}
-
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeMoviePopup();
-});
+document.addEventListener('DOMContentLoaded', initPopup);
 
 export { openMoviePopup };
