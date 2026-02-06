@@ -9,8 +9,6 @@
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/vanilla-app-template/assets/popcorn.svg" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet" />
-
   <script type="module" crossorigin src="/vanilla-app-template/assets/main-B2tXYas4.js"></script>
   <link rel="stylesheet" crossorigin href="/vanilla-app-template/assets/main-BbL4P2Eg.css">
   <link rel="stylesheet" crossorigin href="/vanilla-app-template/assets/styles-CrxrlBGq.css">
@@ -18,7 +16,8 @@
 
 <body class="dark-theme">
   <!-- HEADER (senin modülün) -->
-  <header class="header">
+  <main>
+    <header class="header">
   <div class="container header-container">
     <!-- LEFT -->
     <div class="header-left">
@@ -91,51 +90,73 @@
 </header>
 
 
-  <!-- HERO -->
-  <section id="hero" class="hero-section">
-  <div class="hero-overlay"></div>
-  <div class="container hero-content">
-    <h1 id="hero-title"></h1>
-    <div id="hero-rating" class="stars"></div>
-    <p id="hero-description"></p>
+    <!-- HERO (başka arkadaş ekleyecek) -->
+    <!-- <include src="./partials/hero.html"></include> -->
 
-    <div class="hero-buttons">
-      <button id="watch-trailer" class="btn btn-orange">Watch trailer</button>
-      <button id="more-details" class="btn btn-outline">More details</button>
+    <!-- CATALOG (başka arkadaş ekleyecek) -->
+    <section class="catalog-page">
+  <div class="search-row">
+    <div class="film-input">
+      <input type="text" class="search-input" placeholder="Film" />
+      <button class="search-clear-btn" style="display: block">
+        <svg width="18" height="18">
+          <use href="../images/icons.svg#icon-close"></use>
+        </svg>
+      </button>
     </div>
+    <!-- YEAR DROPDOWN -->
+    <div class="year-select">
+      <button class="year-btn" id="yearBtn" type="button">
+        <span id="selectedYear">Year</span>
+        <svg class="icon-chevron" width="16" height="16" aria-hidden="true">
+          <use href="../images/icons.svg#icon-chevron-down"></use>
+        </svg>
+      </button>
+
+      <ul class="year-dropdown" id="yearDropdown">
+        <li data-year="">Year</li>
+        <li data-year="2026">2026</li>
+        <li data-year="2025">2025</li>
+        <li data-year="2024">2024</li>
+        <li data-year="2023">2023</li>
+        <li data-year="2022">2022</li>
+        <li data-year="2021">2021</li>
+        <li data-year="2020">2020</li>
+        <li data-year="2019">2019</li>
+        <li data-year="2018">2018</li>
+        <li data-year="2017">2017</li>
+        <li data-year="2016">2016</li>
+        <li data-year="2015">2015</li>
+      </ul>
+    </div>
+
+    <div class="search-input-content" id="searchContent" style="display: none">
+      <input
+        type="text"
+        class="search-input search-input-text"
+        placeholder="Search"
+      />
+    </div>
+
+    <button class="search-btn">
+      <svg width="18" height="18">
+        <use href="../images/icons.svg#icon-search"></use>
+      </svg>
+    </button>
   </div>
 </section>
-
-<div id="error-popup" class="modal-hidden">
-  <div class="error-content">
-    <span class="close-btn">&times;</span>
-    <h2>OOPS...</h2>
-    <p>We are very sorry!</p>
-    <p>But we couldn't find the trailer.</p>
-    <img src="/src/assets/error-icon.png" alt="Error Icon" />
+<div class="movie-list">
+  <div id="moviesContainer"></div>
+  <div id="emptyMessage" style="display: block">
+    <p class="emptyHidden">
+      OOPS...<br />
+      We are very sorry!<br />
+      You don't have any results matching your search.
+    </p>
   </div>
 </div>
 
-<div id="video-modal" class="modal-hidden">
-  <div class="video-content">
-    <span class="close-video">&times;</span>
-    <div class="iframe-container">
-      <iframe
-        id="trailer-video"
-        width="100%"
-        height="100%"
-        src=""
-        frameborder="0"
-        allowfullscreen
-      ></iframe>
-    </div>
-  </div>
-</div>
-
-
-  <!-- CATALOG (başka arkadaş ekleyecek) -->
-  <!-- <include src="./partials/catalog.html"></include> -->
-
+  </main>
   <!-- FOOTER (başka arkadaş ekleyecek) -->
   <!-- FOOTER -->
   <footer class="footer">
