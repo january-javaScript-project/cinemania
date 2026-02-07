@@ -72,4 +72,4 @@
       </div>
     </li>
   `}function Fe(){const e=document.querySelector(".team-list");if(!e)return;const t=Ue.map(ze).join("");e.innerHTML=t}function Ye(){const e=document.querySelector("#footer-link"),t=document.querySelector(".backdrop"),r=document.querySelector("[data-modal-close]");if(!e||!t)return;Fe();const n=a=>{a.preventDefault(),t.classList.remove("is-hidden"),document.body.style.overflow="hidden"},o=()=>{t.classList.add("is-hidden"),document.body.style.overflow=""};e.addEventListener("click",n),r&&r.addEventListener("click",o),t.addEventListener("click",a=>{a.target===t&&o()}),document.addEventListener("keydown",a=>{a.key==="Escape"&&!t.classList.contains("is-hidden")&&o()})}document.addEventListener("DOMContentLoaded",()=>{pe(),document.querySelector(".library-section")!==null?re():(ye(),K())});document.addEventListener("DOMContentLoaded",()=>{Ye()});K();
-//# sourceMappingURL=main-MV4xnUj4.js.map
+//# sourceMappingURL=main-BJHL4qwK.js.map
