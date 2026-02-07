@@ -39,6 +39,8 @@ body.light-theme {
 .my-library-hero__overlay {
     position: relative;                         
     z-index: 1;                                 
+    position: relative;
+    z-index: 1;
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg,
@@ -170,6 +172,7 @@ body.light-theme {
     transform: translate(-50%, -50%);
     width: 32px;
     height: 32px; 
+    height: 32px;
     border: 3px solid rgba(255, 255, 255, 0.1);
     border-top: 3px solid #f87d19;
     border-right: 3px solid #f87d19;
@@ -289,7 +292,7 @@ body.light-theme .my-library-error {
     background: var(--mlh-border-color);
 }
 
-/*Responsive*/
+/* Tablet Breakpoint */
 @media (min-width: 768px) {
     .my-library-hero {
         width: 100%;
@@ -358,5 +361,46 @@ body.light-theme .my-library-error {
 
     .my-library-error__image img {
         width: 260px;
+    }
+}
+
+/* Desktop Breakpoint */
+@media (min-width: 1280px) {
+    .my-library-hero {
+        height: 720px;
+    }
+
+    .my-library-hero__overlay {
+        padding-left: 135px;
+    }
+
+    .my-library-hero__title {
+        font-size: 64px;
+    }
+
+    .my-library-hero__description {
+        font-size: 16px;
+        max-width: 300px;
+        margin-bottom: 36px;
+    }
+
+    .my-library-hero__btn {
+        width: 139px;
+        height: 48px;
+        font-size: 14px;
+    }
+
+    .my-library-hero__rating .star {
+        font-size: 24px;
+    }
+
+    .my-library-hero__buttons {
+        gap: 10px;
+    }
+
+    .my-library-hero__loader {
+        width: 64px;
+        height: 64px;
+        border-width: 5px;
     }
 }
