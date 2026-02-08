@@ -13,7 +13,6 @@ const modalCloseBtn = document.getElementById('modalClose');
 let genresMap = {}; // ID -> İsim eşleşmesi için
 
 // Başlangıç
-document.addEventListener('DOMContentLoaded', initUpcoming);
 
 async function initUpcoming() {
   try {
@@ -26,6 +25,11 @@ async function initUpcoming() {
     console.error('Hata:', error);
     wrapper.innerHTML = '<p>Film bilgileri yüklenemedi.</p>';
   }
+}
+
+export function initUpcomingThisMonth() {
+  if (!wrapper) return;
+  return initUpcoming();
 }
 
 // Tür Listesini Getir
