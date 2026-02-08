@@ -99,4 +99,4 @@
       </div>
     </li>
   `}function Et(){const e=document.querySelector(".team-list");if(!e)return;const t=wt.map(kt).join("");e.innerHTML=t}function Mt(){const e=document.querySelector("#footer-link"),t=document.querySelector(".backdrop"),r=document.querySelector("[data-modal-close]");if(!e||!t)return;Et();const o=i=>{i.preventDefault(),t.classList.remove("is-hidden"),document.body.style.overflow="hidden"},n=()=>{t.classList.add("is-hidden"),document.body.style.overflow=""};e.addEventListener("click",o),r&&r.addEventListener("click",n),t.addEventListener("click",i=>{i.target===t&&n()}),document.addEventListener("keydown",i=>{i.key==="Escape"&&!t.classList.contains("is-hidden")&&n()})}const C=document.querySelector(".scroll-to-top");C&&(window.addEventListener("scroll",()=>{window.scrollY>300?C.classList.add("is-visible"):C.classList.remove("is-visible")}),C.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})}));document.addEventListener("DOMContentLoaded",()=>{$e(),Mt(),document.querySelector(".library-section")!==null?(he(),it()):(Ce(),Ve())});
-//# sourceMappingURL=main-WDZ60vc_.js.map
+//# sourceMappingURL=main-BdSnzLQd.js.map
