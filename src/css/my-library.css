@@ -381,7 +381,7 @@ body {
   }
 
   .library-list {
-    grid-template-columns: repeat(auto-fill, 224px);
+    grid-template-columns: repeat(3, 224px);
   }
 
   .movie-title {
@@ -422,7 +422,7 @@ body {
 
   .library-list {
     gap: 32px 16px;
-    grid-template-columns: repeat(auto-fill, 395px);
+    grid-template-columns: repeat(3, 395px);
   }
 
   .movie-title {
