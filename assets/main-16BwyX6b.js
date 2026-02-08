@@ -164,4 +164,4 @@
       </div>
     </li>
   `}function Wt(){const e=document.querySelector(".team-list");if(!e)return;const t=Kt.map(Jt).join("");e.innerHTML=t}function Qt(){const e=document.querySelector("#footer-link"),t=document.querySelector(".backdrop"),n=document.querySelector("[data-modal-close]");if(!e||!t)return;Wt();const o=i=>{i.preventDefault(),t.classList.remove("is-hidden"),document.body.style.overflow="hidden"},r=()=>{t.classList.add("is-hidden"),document.body.style.overflow=""};e.addEventListener("click",o),n&&n.addEventListener("click",r),t.addEventListener("click",i=>{i.target===t&&r()}),document.addEventListener("keydown",i=>{i.key==="Escape"&&!t.classList.contains("is-hidden")&&r()})}const P=document.querySelector(".scroll-to-top");P&&(window.addEventListener("scroll",()=>{window.scrollY>300?P.classList.add("is-visible"):P.classList.remove("is-visible")}),P.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})}));document.addEventListener("DOMContentLoaded",()=>{Ye(),Qt(),document.querySelector(".library-section")!==null?(xe(),Ct()):(tt(),yt(),Qe())});
-//# sourceMappingURL=main-Cp73MQ7E.js.map
+//# sourceMappingURL=main-16BwyX6b.js.map
