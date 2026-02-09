@@ -152,4 +152,4 @@
               </div>
             </li>
         `).join("");m.innerHTML=y},a=m=>{const y=r();y&&(m.preventDefault(),i(),y.classList.remove("is-hidden"),document.body.style.overflow="hidden")},d=()=>{const m=r();m&&(m.classList.add("is-hidden"),document.body.style.overflow="")};document.addEventListener("click",m=>{if(m.target.closest(e)){a(m);return}if(m.target.closest(n)){d();return}const y=r();y&&m.target===y&&d()}),document.addEventListener("keydown",m=>{const y=r();m.key==="Escape"&&y&&!y.classList.contains("is-hidden")&&d()})}const j=document.querySelector(".scroll-to-top");j&&(window.addEventListener("scroll",()=>{window.scrollY>300?j.classList.add("is-visible"):j.classList.remove("is-visible")}),j.addEventListener("click",()=>{window.scrollTo({top:0,behavior:"smooth"})}));document.addEventListener("DOMContentLoaded",()=>{Fe(),nn(),document.querySelector(".library-section")!==null?(xe(),Ht()):(at(),Lt(),Xe())});
-//# sourceMappingURL=main-BOVeXQGA.js.map
+//# sourceMappingURL=main-CCapyCKH.js.map
