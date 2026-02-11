@@ -2,7 +2,7 @@ body {
   font-family: 'Roboto', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #111; /* Sayfa yüklenirken beyaz parlamayı önlemek için */
+  background-color: #111; /* Sayfa yÃ¼klenirken beyaz parlamayÄ± Ã¶nlemek iÃ§in */
 }
 
 .hero-section {
@@ -18,7 +18,7 @@ body {
   color: white;
 }
 
-/* Soldan sağa kararma efekti (Resim 1'deki gibi) */
+/* Soldan saÄŸa kararma efekti (Resim 1'deki gibi) */
 .hero-overlay {
   position: absolute;
   top: 0;
@@ -35,7 +35,7 @@ body {
 .hero-content {
   position: relative;
   z-index: 2;
-  padding-left: 20px; /* Mobil uyumlu başlangıç boşluğu */
+  padding-left: 20px; /* Mobil uyumlu baÅŸlangÄ±Ã§ boÅŸluÄŸu */
 }
 
 #hero-title {
@@ -69,22 +69,22 @@ body {
   height: 16px;
   display: inline-block;
   position: relative;
-  background: url('/assets/star-icon.svg') no-repeat center / contain;
+  background: url('../assets/star-icon.svg') no-repeat center / contain;
 }
 
 .star-filled {
-  background: url('/assets/star-icon-filled.svg') no-repeat center / contain;
+  background: url('../assets/star-icon-filled.svg') no-repeat center / contain;
 }
 
 .star-empty {
-  background: url('/assets/star-icon.svg') no-repeat center / contain;
+  background: url('../assets/star-icon.svg') no-repeat center / contain;
 }
 
 .star-half::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('/assets/star-icon-filled.svg') no-repeat center / contain;
+  background: url('../assets/star-icon-filled.svg') no-repeat center / contain;
   clip-path: inset(0 50% 0 0);
 }
 
@@ -143,7 +143,7 @@ body {
   outline: none;
 }
 
-/* --- Error Pop-up (Resim 2 tasarımı) --- */
+/* --- Error Pop-up (Resim 2 tasarÄ±mÄ±) --- */
 .modal-hidden {
   display: none;
   position: fixed;
@@ -200,11 +200,11 @@ body {
   height: 153px;
 }
 
-/* Video Modal Özel Stilleri */
+/* Video Modal Ã–zel Stilleri */
 .video-content {
   width: 90%;
   max-width: 900px;
-  margin: auto; /* Ortalamayı garanti eder */
+  margin: auto; /* OrtalamayÄ± garanti eder */
   background: #000;
   position: relative;
 }

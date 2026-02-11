@@ -89,7 +89,7 @@
   object-fit: cover;
 }
 
-/* Bilgilerin üzerine bindiği alan */
+/* Bilgilerin Ã¼zerine bindiÄŸi alan */
 .weekly-trends__info {
   position: absolute;
   bottom: 0;
@@ -98,10 +98,10 @@
   padding: 20px 12px 12px 12px;
   display: flex;
   justify-content: space-between;
-  /* Metin sol, yıldız sağ */
+  /* Metin sol, yÄ±ldÄ±z saÄŸ */
   align-items: flex-end;
   box-sizing: border-box;
-  /* Alttan yukarıya doğru karartma efekti */
+  /* Alttan yukarÄ±ya doÄŸru karartma efekti */
   background: linear-gradient(to top,
       rgba(0, 0, 0, 0.9) 0%,
       rgba(0, 0, 0, 0) 100%);
@@ -125,7 +125,7 @@
   display: inline-flex;
   gap: 2px;
   margin-bottom: 2px;
-  /* Metinle hizalamak için */
+  /* Metinle hizalamak iÃ§in */
 }
 
 .weekly-trends__stars .star-item {
@@ -133,21 +133,21 @@
   height: 12px;
   display: inline-block;
   position: relative;
-  background: url('/assets/star-icon.svg') no-repeat center / contain;
+  background: url('../assets/star-icon.svg') no-repeat center / contain;
 }
 
 .weekly-trends__stars .star-filled {
-  background: url('/assets/star-icon-filled.svg') no-repeat center / contain;
+  background: url('../assets/star-icon-filled.svg') no-repeat center / contain;
 }
 
 .weekly-trends__stars .star-empty {
-  background: url('/assets/star-icon.svg') no-repeat center / contain;
+  background: url('../assets/star-icon.svg') no-repeat center / contain;
 }
 
 .weekly-trends__stars .star-half::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: url('/assets/star-icon-filled.svg') no-repeat center / contain;
+  background: url('../assets/star-icon-filled.svg') no-repeat center / contain;
   clip-path: inset(0 50% 0 0);
 }
