@@ -77,21 +77,29 @@ function normalizeMovie(movie) {
 ====================================================== */
 
 function createStarsSVG(rating) {
-  const score = Number(rating) / 2;
-  const full = Math.round(score);
-  const empty = 5 - full;
+  const value = Number(rating);
+  if (!Number.isFinite(value)) return '';
 
-  let stars = '';
+  const starCount = value / 2;
+  const fullStars = Math.floor(starCount);
+  const hasHalfStar = starCount % 1 >= 0.3;
+  const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
 
-  for (let i = 0; i < full; i++) {
-    stars += `<img class="star" src="/assets/star-icon-filled.svg" alt="star" />`;
+  let starsHTML = '';
+
+  for (let i = 0; i < fullStars; i++) {
+    starsHTML += '<span class="star-item star-filled"></span>';
   }
 
-  for (let i = 0; i < empty; i++) {
-    stars += `<img class="star" src="/assets/star-icon.svg" alt="star" />`;
+  if (hasHalfStar) {
+    starsHTML += '<span class="star-item star-half"></span>';
   }
 
-  return stars;
+  for (let i = 0; i < emptyStars; i++) {
+    starsHTML += '<span class="star-item star-empty"></span>';
+  }
+
+  return starsHTML;
 }
 
 /* ======================================================
