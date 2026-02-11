@@ -11,8 +11,8 @@
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap"
       rel="stylesheet"
     />
-    <script type="module" crossorigin src="/cinemania/assets/main-C7PZtjBn.js"></script>
-    <link rel="stylesheet" crossorigin href="/cinemania/assets/main-Ctn86yrF.css">
+    <script type="module" crossorigin src="/cinemania/assets/main-COuT4iEF.js"></script>
+    <link rel="stylesheet" crossorigin href="/cinemania/assets/main-CJ1tWMN4.css">
   </head>
 
   <body class="dark-theme">
@@ -20,10 +20,10 @@
   <div class="container header-container">
     <!-- LEFT -->
     <div class="header-left">
-      <!-- Mobile: burger button (popcorn icon) -->
-      <button class="burger-btn" type="button" aria-label="Open menu">
-        <img class="header-popcorn-icon" src="./assets/popcorn.svg" alt="" />
-      </button>
+      <!-- Mobile: icon only (menu trigger moved to MENU text) -->
+      <div class="burger-btn" aria-hidden="true">
+        <img class="header-popcorn-icon" src="/cinemania/assets/popcorn.svg" alt="" />
+      </div>
 
       <!-- Tablet/Desktop: logo link (popcorn + text) -->
       <a class="header-logo-link" href="./index.html" aria-label="Cinemania home">
@@ -34,8 +34,8 @@
 
     <!-- CENTER -->
     <div class="header-center">
-      <!-- Mobile title -->
-      <p class="header-mobile-title">MENU</p>
+      <!-- Mobile menu trigger -->
+      <button class="header-mobile-title" type="button" aria-label="Open menu" aria-expanded="false">MENU</button>
 
       <!-- Tablet/Desktop navigation -->
       <nav class="header-nav" aria-label="Main navigation">
