@@ -6,12 +6,11 @@ import SortCss from 'postcss-sort-media-queries';
 
 export default defineConfig(({ command }) => {
   return {
-    base: command === 'serve' ? '/' : '/cinemania/',
+    base: '/cinemania/',
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
     root: 'src',
-    base: '/',
     build: {
       sourcemap: true,
       rollupOptions: {
